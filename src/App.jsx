@@ -3,7 +3,12 @@ import "./style.css";
 
 
 export const App = () => {
-  const [text, setText] = useState('');
+  // todoリスト
+  const [todos, setTodos] = React.useState([
+    { id: 1, title: "ああああ", status: "すべて" },
+    { id: 2, title: "いいいい", status: "作業中" },
+    { id: 3, title: "うううう", status: "完了" }
+  ]);
   const [radio, setRadio] = React.useState('all');
 
   // ラジオボタン更新
@@ -11,13 +16,10 @@ export const App = () => {
     setRadio(event.target.value);
   }
 
-  // // インプットフォーム
-  // const addTodo = document.getElementById("addTodo").value;
-  
-  
-  // const onClickAdd = () => {
-  //   alert(addTodo);
-  // }
+  // インプットフォーム
+  const addTodo = () => {
+    const newTodo = document.getElementById('inputNewTodo').value;
+  }
 
   return (
     <>
@@ -39,16 +41,30 @@ export const App = () => {
 
 
         <h1>ToDoリスト</h1>
-        <ul>
-          <li>ああああ</li>
-          <li>いいいい</li>
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <td >ID</td>
+              <td>コメント</td>
+              <td>状態</td>
+            </tr>
+          </thead>
+          <tbody id="todo-body">
+            {todos.map(todo => (
+              <tr>
+                <td>{todo.id}</td>
+                <td>{todo.title}</td>
+                <td>{todo.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       
+      <h2>新規タスクの追加</h2>
       <div className="add-todo">
-        <h2>新規タスクの追加</h2>
-        <input value={text} type="text" />
-        <button onClick>追加</button>
+        <input id="inputNewTodo" type="text" />
+        <button type="submit" onClick={addTodo}>追加</button>
       </div>
       
     </>
