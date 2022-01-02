@@ -21,6 +21,7 @@ export const App = () => {
 
   // 追加ボタンを押すとタスクがToDoリストに追加される
   const onClickAdd = () => {
+    if (todoText === "") return;
     const newTodo = {
       comment: todoText,
       status: "作業中"
