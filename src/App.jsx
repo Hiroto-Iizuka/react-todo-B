@@ -32,6 +32,15 @@ export const App = () => {
     setTodoText("");
   };
 
+  const onClickChange = (index) => {
+    alert("Change!!" + index)
+    // if (event.target.value === "作業中") {
+    //   setNewTodoList(state => ({...state, status: "完了"}));
+    // } else if (event.target.value === "完了") {
+    //   setNewTodoList(state => ({...state, status: "作業中"}));
+    // }
+  }
+
   return (
     <>
       <div className="complete-area">
@@ -65,7 +74,7 @@ export const App = () => {
               <tr>
                 <td>{index}</td>
                 <td>{todo.comment}</td>
-                <td><button>{todo.status}</button></td>
+                <td><button onClick={(event) => onClickChange(index)}>{todo.status}</button></td>
                 <td><button>削除</button></td>
               </tr>
             ))}
