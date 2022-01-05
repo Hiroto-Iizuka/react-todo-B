@@ -12,6 +12,18 @@ export const App = () => {
   // ラジオボタン更新
   const handleChange = (event) => {
     setRadio(event.target.value);
+    if (event.target.value === "incomplete") {
+      alert("作業中");
+    } else if (event.target.value === "complete") {
+      alert("完了");
+    } else {
+      alert("すべて");
+    }
+    // const filterTodoList = [...todoList];
+    // if (filterTodoList.status === "作業中") {
+    //   filterTodoList.map((value) => {value})
+    //   setNewTodoList()
+    // }
   }
 
   // インプットフォームの状態を管理
