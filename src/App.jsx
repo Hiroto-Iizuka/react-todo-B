@@ -32,6 +32,14 @@ export const App = () => {
     setTodoText("");
   };
 
+  // 削除
+  const onClickDelete = (index) => {
+    const deletedTodoList = [...todoList];
+    deletedTodoList.splice(index, 1);
+    setNewTodoList(deletedTodoList);
+  };
+
+  // statusの切り替え
   const onClickSwitch = (index) => {
     const switchTodoList = [...todoList];
     if (switchTodoList[index].status === "作業中") {
@@ -40,7 +48,7 @@ export const App = () => {
       switchTodoList[index].status = "作業中";
     }
     setNewTodoList(switchTodoList);
-  }
+  };
 
   return (
     <>
@@ -76,7 +84,7 @@ export const App = () => {
                 <td>{index}</td>
                 <td>{todo.comment}</td>
                 <td><button onClick={() => onClickSwitch(index)}>{todo.status}</button></td>
-                <td><button>削除</button></td>
+                <td><button onClick={() => onClickDelete(index)}>削除</button></td>
               </tr>
             ))}
           </tbody>
