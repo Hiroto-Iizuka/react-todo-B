@@ -5,7 +5,6 @@ import "./style.css";
 export const App = () => {
   // todoリスト
   const [todoText, setTodoText] = useState("");
-  // const [nameError, setNameError] = useState("");
   const [todoList, setNewTodoList] = React.useState([]);
   const [radio, setRadio] = React.useState('all');
 
@@ -13,17 +12,14 @@ export const App = () => {
   const handleChange = (event) => {
     setRadio(event.target.value);
     if (event.target.value === "incomplete") {
-      alert("作業中");
+      const incompleteTodoList = [...todoList].filter((todo) => todo.status === "作業中");
+      setNewTodoList(incompleteTodoList);
     } else if (event.target.value === "complete") {
-      alert("完了");
+      const completeTodoList = [...todoList].filter((todo) => todo.status === "完了");
+      setNewTodoList(completeTodoList);
     } else {
-      alert("すべて");
+      return
     }
-    // const filterTodoList = [...todoList];
-    // if (filterTodoList.status === "作業中") {
-    //   filterTodoList.map((value) => {value})
-    //   setNewTodoList()
-    // }
   }
 
   // インプットフォームの状態を管理
