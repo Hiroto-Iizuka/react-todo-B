@@ -18,9 +18,7 @@ export const App = () => {
     } else if (event.target.value === "complete") {
       const completeTodoList = [...todoList].filter((todo) => todo.status === "完了");
       setFilteredTodoList(completeTodoList);
-    } else {
-      return
-    }
+    } return
   }
 
   // インプットフォームの状態を管理
